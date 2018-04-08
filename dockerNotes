@@ -1,0 +1,22 @@
+--rm -v  $PWD:/app
+
+automatically removed the mount when the container exists 
+
+-v ->  mount the current directory to /app inside the container
+
+docker run -it --rm -v "$PWD":/app -w /app demo/spring:maven-3.3-jdk-8 mvn clean install
+
+
+docker run -it -d --name spring -p 8080:8080 -v "$PWD":/app demo/spring:maven-3.3-jdk-8 bash -c "cp /app/target/springwebapp.war /tomcat/webapps/ & /tomcat/bin/catalina.sh run"
+
+--name -> provide the container a name to easily identify it 
+
+-p assigne a port  hostPORT:containerPORT
+
+-w directory inside the container 
+
+-v -> copying the current working directory inside the container 
+
+Image name 
+
+bash commands to execute inside the container 
